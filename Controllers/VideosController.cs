@@ -36,7 +36,7 @@ namespace blockbuster_api.Controllers
         {
             try
             {
-                return Ok();
+                return Ok(_vs.Get(id));
             }
             catch (Exception e)
             {
@@ -50,7 +50,7 @@ namespace blockbuster_api.Controllers
         {
             try
             {
-                return Ok();
+                return Ok(_vs.Create(newVideo));
             }
             catch (Exception e)
             {
@@ -63,7 +63,8 @@ namespace blockbuster_api.Controllers
         {
             try
             {
-                return Ok();
+                updatedVideo.Id = id;
+                return Ok(_vs.Edit(updatedVideo));
             }
             catch (Exception e)
             {
@@ -72,11 +73,11 @@ namespace blockbuster_api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<string> Delete()
+        public ActionResult<string> Delete(int id)
         {
             try
             {
-                return Ok();
+                return Ok(_vs.Delete(id));
             }
             catch (Exception e)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using blockbuster_api.Repositories;
 using blockbuster_api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,8 +35,7 @@ namespace blockbuster_api
 
             //Register Transients for Dependency Injection
             services.AddTransient<VideosService>();
-
-
+            services.AddTransient<VideosRepository>();
 
         }
 
