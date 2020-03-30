@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using blockbuster_api.Models;
+using blockbuster_api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace blockbuster_api.Controllers
@@ -8,14 +10,19 @@ namespace blockbuster_api.Controllers
     [Route("api/[controller]")]
     public class VideosController : ControllerBase
     {
-
+        private readonly VideosService _vs;
+        // NOTE Dependency Injection
+        public VideosController(VideosService vs)
+        {
+            _vs = vs;
+        }
 
         [HttpGet]
         public ActionResult<IEnumerable<Video>> Get()
         {
             try
             {
-                return Ok();
+                return Ok(_vs.Get());
             }
             catch (Exception e)
             {
